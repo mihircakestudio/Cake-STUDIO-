@@ -1,65 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cake Studio</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
-        header {
-            background-color: #f8b400;
-            padding: 20px;
-        }
-        h1 {
-            color: #333;
-        }
-        nav {
-            margin: 20px 0;
-        }
-        nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: #333;
-        }
-        footer {
-            background-color: #f8b400;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Mihir Cake Studio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #fff;
+}
+
+header {
+  background: #ff4d6d;
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 22px;
+}
+
+nav a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.cart-btn {
+  background: white;
+  color: #ff4d6d;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.banner {
+  background: #ffe5ec;
+  padding: 40px;
+  text-align: center;
+}
+
+.banner h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 30px;
+}
+
+.product {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.product img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.product h3 {
+  margin: 10px 0;
+}
+
+.product p {
+  color: #555;
+}
+
+.product button {
+  background: #ff4d6d;
+  color: white;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.cart {
+  position: fixed;
+  right: -100%;
+  top: 0;
+  width: 300px;
+  height: 100%;
+  background: #fff;
+  border-left: 2px solid #ff4d6d;
+  padding: 20px;
+  transition: 0.3s;
+  overflow-y: auto;
+}
+
+.cart h2 {
+  margin-top: 0;
+}
+
+.cart-item {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.close-cart {
+  background: #ff4d6d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  float: right;
+}
+
+section {
+  padding: 30px;
+}
+
+footer {
+  background: #222;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
+</style>
 </head>
+
 <body>
-    <header>
-        <h1>Welcome to Cake Studio</h1>
-    </header>
-    <nav>
-        <a href="#menu">Menu</a>
-        <a href="#order">Order</a>
-        <a href="#contact">Contact</a>
-    </nav>
-    <main>
-        <section id="menu">
-            <h2>Our Menu</h2>
-            <p>Delicious cakes and pastries made fresh daily!</p>
-        </section>
-        <section id="order">
-            <h2>Order Your Cake</h2>
-            <p>Contact us to place your custom cake order.</p>
-        </section>
-        <section id="contact">
-            <h2>Contact Us</h2>
-            <p>Email: contact@cakestudio.com</p>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 Cake Studio. All rights reserved.</p>
-    </footer>
+
+<header>
+  <h1>Mihir Cake Studio</h1>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#cakes">Cakes</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="cart-btn" onclick="toggleCart()">🛒 Cart (<span id="cartCount">0</span>)</div>
+</header>
+
+<div class="banner" id="home">
+  <h2>Delicious Cakes for Every Occasion 🎂</h2>
+  <p>Fresh • Handmade • Premium Quality</p>
+</div>
+
+<div class="products" id="cakes">
+  <div class="product">
+    <img src="https://images.unsplash.com/photo-1601972599720-bb9e7b9b6d83">
+    <h3>Chocolate Cake</h3>
+    <p>₹699</p>
+    <button onclick="addToCart('Chocolate Cake',699)">Add to Cart</button>
+  </div>
+
+  <div class="product">
+    <img src="https://images.unsplash.com/photo-1542826438-8b27c6c8d5d7">
+    <h3>Red Velvet Cake</h3>
+    <p>₹799</p>
+    <button onclick="addToCart('Red Velvet Cake',799)">Add to Cart</button>
+  </div>
+
+  <div class="product">
+    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587">
+    <h3>Black Forest Cake</h3>
+    <p>₹749</p>
+    <button onclick="addToCart('Black Forest Cake',749)">Add to Cart</button>
+  </div>
+
+  <div class="product">
+    <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e">
+    <h3>Butterscotch Cake</h3>
+    <p>₹699</p>
+    <button onclick="addToCart('Butterscotch Cake',699)">Add to Cart</button>
+  </div>
+</div>
+
+<section id="about">
+  <h2>About Us</h2>
+  <p>Mihir Cake Studio makes premium cakes for birthdays, weddings and celebrations. 100% fresh and hygienic.</p>
+</section>
+
+<section id="contact">
+  <h2>Contact Us</h2>
+  <p>📞 Phone: 9XXXXXXXXX</p>
+  <p>📍 Location: Your City</p>
+</section>
+
+<footer>
+  © 2026 Mihir Cake Studio
+</footer>
+
+<div class="cart" id="cart">
+  <button class="close-cart" onclick="toggleCart()">X</button>
+  <h2>Your Cart</h2>
+  <div id="cartItems"></div>
+</div>
+
+<script>
+let cart = [];
+function toggleCart(){
+  const c = document.getElementById("cart");
+  c.style.right = c.style.right === "0px" ? "-100%" : "0px";
+}
+
+function addToCart(name, price){
+  cart.push({name, price});
+  document.getElementById("cartCount").innerText = cart.length;
+  renderCart();
+}
+
+function renderCart(){
+  let html = "";
+  cart.forEach(item=>{
+    html += `<div class="cart-item">
+      <strong>${item.name}</strong><br>₹${item.price}
+    </div>`;
+  });
+  document.getElementById("cartItems").innerHTML = html;
+}
+</script>
+
 </body>
 </html>
