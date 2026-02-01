@@ -2,220 +2,155 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Friends Bakery | Cake Studio</title>
+<title>Friends Bakery | Ujjain</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body{
-    margin:0;
-    font-family: Arial, sans-serif;
-    background:#fff6f6;
-}
-header{
-    background:#c2185b;
-    color:white;
-    padding:15px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-header h2{margin:0;}
-nav a{
-    color:white;
-    margin:0 10px;
-    text-decoration:none;
-    font-weight:bold;
-}
-section{
-    padding:30px;
-}
-.products{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
-}
-.card{
-    background:white;
-    border-radius:10px;
-    box-shadow:0 0 10px rgba(0,0,0,0.1);
-    padding:15px;
-    text-align:center;
-}
-.card img{
-    width:100%;
-    height:180px;
-    object-fit:cover;
-    border-radius:10px;
-}
-button{
-    background:#c2185b;
-    color:white;
-    border:none;
-    padding:10px;
-    border-radius:5px;
-    cursor:pointer;
-}
-button:hover{opacity:0.9;}
-
-#cart{
-    position:fixed;
-    top:80px;
-    right:20px;
-    background:white;
-    width:300px;
-    max-height:400px;
-    overflow:auto;
-    padding:15px;
-    box-shadow:0 0 15px rgba(0,0,0,0.2);
-    display:none;
-}
-footer{
-    background:#333;
-    color:white;
-    text-align:center;
-    padding:20px;
-}
-input,select,textarea{
-    width:100%;
-    padding:8px;
-    margin:5px 0;
-}
+body{margin:0;font-family:Arial;background:#fff5f5}
+header{background:#b71c1c;color:white;padding:15px;text-align:center}
+nav{display:flex;justify-content:space-around;background:#f44336;padding:10px;flex-wrap:wrap}
+nav a{color:white;text-decoration:none;font-weight:bold}
+section{padding:20px}
+h2{color:#b71c1c}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:15px}
+.card{border:1px solid #ddd;border-radius:8px;background:white;text-align:center;padding:10px}
+.card img{width:100%;height:150px;object-fit:cover;border-radius:6px}
+button{background:#b71c1c;color:white;border:none;padding:10px 15px;border-radius:5px;cursor:pointer}
+input,select,textarea{width:100%;padding:8px;margin:6px 0}
+footer{background:#333;color:white;text-align:center;padding:15px}
 </style>
 </head>
 
 <body>
 
 <header>
-<h2>🎂 Friends Bakery</h2>
+<h1>🎂 Friends Bakery</h1>
+<p>Ujjain | WhatsApp Orders Only</p>
+</header>
+
 <nav>
 <a href="#home">Home</a>
 <a href="#cakes">Cakes</a>
-<a href="#cheesecake">Cheesecakes</a>
-<a href="#custom">Customize</a>
+<a href="#cheese">Cheesecakes</a>
+<a href="#order">Order</a>
 <a href="#contact">Contact</a>
-<a href="#" onclick="toggleCart()">🛒 Cart</a>
 </nav>
-</header>
 
 <section id="home">
-<h1>Welcome to Friends Bakery</h1>
-<p>Fresh Cakes | Premium Cheesecakes | Custom Orders</p>
+<h2>Welcome</h2>
+<p>Fresh • Custom • Delicious Cakes for Every Occasion</p>
 </section>
 
 <section id="cakes">
-<h2>🍰 Cake Flavors</h2>
-<div class="products">
-<script>
-const cakes=[
-"Black Forest","White Forest","Chocolate Truffle","Red Velvet",
-"Butterscotch","Pineapple","Strawberry","Mango","KitKat","Oreo"
-];
-cakes.forEach(c=>{
-document.write(`
+<h2>Cakes</h2>
+<div class="grid">
+
 <div class="card">
-<img src="https://source.unsplash.com/400x300/?cake">
-<h3>${c}</h3>
-<button onclick="addToCart('${c}')">Add to Cart</button>
-</div>`);
-});
-</script>
+<img src="https://images.unsplash.com/photo-1601979031925-424e53b6caaa">
+<p>Chocolate Cake</p>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1599785209798-5cdbd8b24b3d">
+<p>Black Forest</p>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1603532648955-039310d9ed75">
+<p>Red Velvet</p>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1542826438-8b2aee0d9a4b">
+<p>Pineapple Cake</p>
+</div>
+
 </div>
 </section>
 
-<section id="cheesecake">
-<h2>🧀 Cheesecake Flavors</h2>
-<div class="products">
-<script>
-const cheesecakes=[
-"Classic Cheesecake","Blueberry Cheesecake","Lotus Cheesecake",
-"Chocolate Cheesecake","Strawberry Cheesecake","Oreo Cheesecake"
-];
-cheesecakes.forEach(c=>{
-document.write(`
+<section id="cheese">
+<h2>Cheesecakes</h2>
+<div class="grid">
+
 <div class="card">
-<img src="https://source.unsplash.com/400x300/?cheesecake">
-<h3>${c}</h3>
-<button onclick="addToCart('${c}')">Add to Cart</button>
-</div>`);
-});
-</script>
+<img src="https://images.unsplash.com/photo-1551024601-bec78aea704b">
+<p>Blueberry Cheesecake</p>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587">
+<p>Oreo Cheesecake</p>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1621303837174-89787a7d4722">
+<p>Lotus Cheesecake</p>
+</div>
+
 </div>
 </section>
 
-<section id="custom">
-<h2>🎨 Customize Your Cake</h2>
-<input id="customCake" placeholder="Cake Flavor">
-<select id="size">
-<option>0.5 KG</option>
-<option>1 KG</option>
-<option>2 KG</option>
+<section id="order">
+<h2>Customize & Order</h2>
+
+<input id="name" placeholder="Your Name">
+<input id="phone" placeholder="Phone Number">
+
+<select id="type">
+<option>Cake</option>
+<option>Cheesecake</option>
 </select>
-<textarea id="message" placeholder="Message on Cake"></textarea>
-<button onclick="customAdd()">Add Custom Cake</button>
+
+<select id="flavour">
+<option>Chocolate</option>
+<option>Vanilla</option>
+<option>Red Velvet</option>
+<option>Blueberry</option>
+<option>Oreo</option>
+<option>Lotus</option>
+</select>
+
+<select id="weight">
+<option>0.5 Kg</option>
+<option>1 Kg</option>
+<option>2 Kg</option>
+</select>
+
+<textarea id="msg" placeholder="Message on Cake"></textarea>
+
+<button onclick="orderNow()">Order on WhatsApp</button>
 </section>
 
 <section id="contact">
-<h2>📞 Contact Us</h2>
-<p><b>City:</b> Ujjain</p>
-<p><b>Phone / WhatsApp:</b> 7000257962</p>
-<p><b>Email:</b> friendsbakery161@gmail.com</p>
+<h2>Contact</h2>
+<p>📍 Ujjain</p>
+<p>📞 7000257962 (WhatsApp)</p>
+<p>📧 friendsbakery161@gmail.com</p>
 
-<h3>📝 Checkout</h3>
-<input id="name" placeholder="Your Name">
-<input id="phone" placeholder="Phone Number">
-<input id="address" placeholder="Delivery Address">
-<button onclick="checkout()">Place Order</button>
+<form action="https://formsubmit.co/friendsbakery161@gmail.com" method="POST">
+<input name="name" placeholder="Name" required>
+<input name="phone" placeholder="Phone" required>
+<textarea name="message" placeholder="Message"></textarea>
+<button type="submit">Send Email</button>
+</form>
 </section>
 
-<div id="cart">
-<h3>Your Cart</h3>
-<ul id="cartItems"></ul>
-</div>
-
 <footer>
-<p>© 2026 Friends Bakery | Ujjain</p>
+© Friends Bakery | Order via WhatsApp
 </footer>
 
 <script>
-let cart=[];
+function orderNow(){
+let text =
+"Friends Bakery Order%0A%0A"+
+"Name: "+name.value+"%0A"+
+"Phone: "+phone.value+"%0A"+
+"Type: "+type.value+"%0A"+
+"Flavour: "+flavour.value+"%0A"+
+"Weight: "+weight.value+"%0A"+
+"Message: "+msg.value;
 
-function addToCart(item){
-cart.push(item);
-renderCart();
-}
-
-function customAdd(){
-let c=document.getElementById("customCake").value;
-let s=document.getElementById("size").value;
-let m=document.getElementById("message").value;
-cart.push(Custom Cake: ${c} | ${s} | Msg: ${m});
-renderCart();
-}
-
-function renderCart(){
-let ul=document.getElementById("cartItems");
-ul.innerHTML="";
-cart.forEach(i=>{
-let li=document.createElement("li");
-li.innerText=i;
-ul.appendChild(li);
-});
-}
-
-function toggleCart(){
-let c=document.getElementById("cart");
-c.style.display=c.style.display==="block"?"none":"block";
-}
-
-function checkout(){
-let name=document.getElementById("name").value;
-let phone=document.getElementById("phone").value;
-let address=document.getElementById("address").value;
-
-let order=Order Details:%0AName: ${name}%0APhone: ${phone}%0AAddress: ${address}%0AItems:%0A${cart.join("%0A")};
-
-window.open(https://wa.me/917000257962?text=${order},"_blank");
-window.location.href=mailto:friendsbakery161@gmail.com?subject=New Cake Order&body=${order};
+window.location.href="https://wa.me/917000257962?text="+text;
 }
 </script>
 
