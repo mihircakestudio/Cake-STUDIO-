@@ -2,133 +2,83 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Mihir Cake Studio</title>
+<title>Friends Bakery | Cake Studio</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #fff;
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background:#fff6f6;
 }
-
-header {
-  background: #ff4d6d;
-  color: white;
-  padding: 15px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+header{
+    background:#c2185b;
+    color:white;
+    padding:15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
-
-header h1 {
-  margin: 0;
-  font-size: 22px;
+header h2{margin:0;}
+nav a{
+    color:white;
+    margin:0 10px;
+    text-decoration:none;
+    font-weight:bold;
 }
-
-nav a {
-  color: white;
-  margin: 0 10px;
-  text-decoration: none;
-  font-weight: bold;
+section{
+    padding:30px;
 }
-
-.cart-btn {
-  background: white;
-  color: #ff4d6d;
-  padding: 6px 12px;
-  border-radius: 5px;
-  cursor: pointer;
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
 }
-
-.banner {
-  background: #ffe5ec;
-  padding: 40px;
-  text-align: center;
+.card{
+    background:white;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+    padding:15px;
+    text-align:center;
 }
-
-.banner h2 {
-  font-size: 32px;
-  margin-bottom: 10px;
+.card img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+    border-radius:10px;
 }
-
-.products {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  padding: 30px;
+button{
+    background:#c2185b;
+    color:white;
+    border:none;
+    padding:10px;
+    border-radius:5px;
+    cursor:pointer;
 }
+button:hover{opacity:0.9;}
 
-.product {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
-  text-align: center;
+#cart{
+    position:fixed;
+    top:80px;
+    right:20px;
+    background:white;
+    width:300px;
+    max-height:400px;
+    overflow:auto;
+    padding:15px;
+    box-shadow:0 0 15px rgba(0,0,0,0.2);
+    display:none;
 }
-
-.product img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
+footer{
+    background:#333;
+    color:white;
+    text-align:center;
+    padding:20px;
 }
-
-.product h3 {
-  margin: 10px 0;
-}
-
-.product p {
-  color: #555;
-}
-
-.product button {
-  background: #ff4d6d;
-  color: white;
-  border: none;
-  padding: 10px;
-  width: 100%;
-  cursor: pointer;
-}
-
-.cart {
-  position: fixed;
-  right: -100%;
-  top: 0;
-  width: 300px;
-  height: 100%;
-  background: #fff;
-  border-left: 2px solid #ff4d6d;
-  padding: 20px;
-  transition: 0.3s;
-  overflow-y: auto;
-}
-
-.cart h2 {
-  margin-top: 0;
-}
-
-.cart-item {
-  border-bottom: 1px solid #ddd;
-  padding: 10px 0;
-}
-
-.close-cart {
-  background: #ff4d6d;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
-  float: right;
-}
-
-section {
-  padding: 30px;
-}
-
-footer {
-  background: #222;
-  color: white;
-  text-align: center;
-  padding: 15px;
+input,select,textarea{
+    width:100%;
+    padding:8px;
+    margin:5px 0;
 }
 </style>
 </head>
@@ -136,93 +86,136 @@ footer {
 <body>
 
 <header>
-  <h1>Mihir Cake Studio</h1>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#cakes">Cakes</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </nav>
-  <div class="cart-btn" onclick="toggleCart()">🛒 Cart (<span id="cartCount">0</span>)</div>
+<h2>🎂 Friends Bakery</h2>
+<nav>
+<a href="#home">Home</a>
+<a href="#cakes">Cakes</a>
+<a href="#cheesecake">Cheesecakes</a>
+<a href="#custom">Customize</a>
+<a href="#contact">Contact</a>
+<a href="#" onclick="toggleCart()">🛒 Cart</a>
+</nav>
 </header>
 
-<div class="banner" id="home">
-  <h2>Delicious Cakes for Every Occasion 🎂</h2>
-  <p>Fresh • Handmade • Premium Quality</p>
+<section id="home">
+<h1>Welcome to Friends Bakery</h1>
+<p>Fresh Cakes | Premium Cheesecakes | Custom Orders</p>
+</section>
+
+<section id="cakes">
+<h2>🍰 Cake Flavors</h2>
+<div class="products">
+<script>
+const cakes=[
+"Black Forest","White Forest","Chocolate Truffle","Red Velvet",
+"Butterscotch","Pineapple","Strawberry","Mango","KitKat","Oreo"
+];
+cakes.forEach(c=>{
+document.write(`
+<div class="card">
+<img src="https://source.unsplash.com/400x300/?cake">
+<h3>${c}</h3>
+<button onclick="addToCart('${c}')">Add to Cart</button>
+</div>`);
+});
+</script>
 </div>
+</section>
 
-<div class="products" id="cakes">
-  <div class="product">
-    <img src="https://images.unsplash.com/photo-1601972599720-bb9e7b9b6d83">
-    <h3>Chocolate Cake</h3>
-    <p>₹699</p>
-    <button onclick="addToCart('Chocolate Cake',699)">Add to Cart</button>
-  </div>
-
-  <div class="product">
-    <img src="https://images.unsplash.com/photo-1542826438-8b27c6c8d5d7">
-    <h3>Red Velvet Cake</h3>
-    <p>₹799</p>
-    <button onclick="addToCart('Red Velvet Cake',799)">Add to Cart</button>
-  </div>
-
-  <div class="product">
-    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587">
-    <h3>Black Forest Cake</h3>
-    <p>₹749</p>
-    <button onclick="addToCart('Black Forest Cake',749)">Add to Cart</button>
-  </div>
-
-  <div class="product">
-    <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e">
-    <h3>Butterscotch Cake</h3>
-    <p>₹699</p>
-    <button onclick="addToCart('Butterscotch Cake',699)">Add to Cart</button>
-  </div>
+<section id="cheesecake">
+<h2>🧀 Cheesecake Flavors</h2>
+<div class="products">
+<script>
+const cheesecakes=[
+"Classic Cheesecake","Blueberry Cheesecake","Lotus Cheesecake",
+"Chocolate Cheesecake","Strawberry Cheesecake","Oreo Cheesecake"
+];
+cheesecakes.forEach(c=>{
+document.write(`
+<div class="card">
+<img src="https://source.unsplash.com/400x300/?cheesecake">
+<h3>${c}</h3>
+<button onclick="addToCart('${c}')">Add to Cart</button>
+</div>`);
+});
+</script>
 </div>
+</section>
 
-<section id="about">
-  <h2>About Us</h2>
-  <p>Mihir Cake Studio makes premium cakes for birthdays, weddings and celebrations. 100% fresh and hygienic.</p>
+<section id="custom">
+<h2>🎨 Customize Your Cake</h2>
+<input id="customCake" placeholder="Cake Flavor">
+<select id="size">
+<option>0.5 KG</option>
+<option>1 KG</option>
+<option>2 KG</option>
+</select>
+<textarea id="message" placeholder="Message on Cake"></textarea>
+<button onclick="customAdd()">Add Custom Cake</button>
 </section>
 
 <section id="contact">
-  <h2>Contact Us</h2>
-  <p>📞 Phone: 9XXXXXXXXX</p>
-  <p>📍 Location: Your City</p>
+<h2>📞 Contact Us</h2>
+<p><b>City:</b> Ujjain</p>
+<p><b>Phone / WhatsApp:</b> 7000257962</p>
+<p><b>Email:</b> friendsbakery161@gmail.com</p>
+
+<h3>📝 Checkout</h3>
+<input id="name" placeholder="Your Name">
+<input id="phone" placeholder="Phone Number">
+<input id="address" placeholder="Delivery Address">
+<button onclick="checkout()">Place Order</button>
 </section>
 
-<footer>
-  © 2026 Mihir Cake Studio
-</footer>
-
-<div class="cart" id="cart">
-  <button class="close-cart" onclick="toggleCart()">X</button>
-  <h2>Your Cart</h2>
-  <div id="cartItems"></div>
+<div id="cart">
+<h3>Your Cart</h3>
+<ul id="cartItems"></ul>
 </div>
 
+<footer>
+<p>© 2026 Friends Bakery | Ujjain</p>
+</footer>
+
 <script>
-let cart = [];
-function toggleCart(){
-  const c = document.getElementById("cart");
-  c.style.right = c.style.right === "0px" ? "-100%" : "0px";
+let cart=[];
+
+function addToCart(item){
+cart.push(item);
+renderCart();
 }
 
-function addToCart(name, price){
-  cart.push({name, price});
-  document.getElementById("cartCount").innerText = cart.length;
-  renderCart();
+function customAdd(){
+let c=document.getElementById("customCake").value;
+let s=document.getElementById("size").value;
+let m=document.getElementById("message").value;
+cart.push(Custom Cake: ${c} | ${s} | Msg: ${m});
+renderCart();
 }
 
 function renderCart(){
-  let html = "";
-  cart.forEach(item=>{
-    html += `<div class="cart-item">
-      <strong>${item.name}</strong><br>₹${item.price}
-    </div>`;
-  });
-  document.getElementById("cartItems").innerHTML = html;
+let ul=document.getElementById("cartItems");
+ul.innerHTML="";
+cart.forEach(i=>{
+let li=document.createElement("li");
+li.innerText=i;
+ul.appendChild(li);
+});
+}
+
+function toggleCart(){
+let c=document.getElementById("cart");
+c.style.display=c.style.display==="block"?"none":"block";
+}
+
+function checkout(){
+let name=document.getElementById("name").value;
+let phone=document.getElementById("phone").value;
+let address=document.getElementById("address").value;
+
+let order=Order Details:%0AName: ${name}%0APhone: ${phone}%0AAddress: ${address}%0AItems:%0A${cart.join("%0A")};
+
+window.open(https://wa.me/917000257962?text=${order},"_blank");
+window.location.href=mailto:friendsbakery161@gmail.com?subject=New Cake Order&body=${order};
 }
 </script>
 
